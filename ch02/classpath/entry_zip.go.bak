@@ -1,0 +1,26 @@
+package classpath
+
+import (
+	"archive/zip"
+	"io/ioutil"
+	"path/filepath"
+	"errors"
+)
+
+type ZipEntry struct {
+	absPath string
+}
+
+//实例化ZipEntry
+func newZipEntry(path string) *ZipEntry {
+	absDir, err := filepath.Abs(path)
+	if err != nil {
+		panic(err)
+	}
+	return &ZipEntry{absDir}
+}
+
+//加载压缩包
+func (self * ZipEntry) readClass(className string) ([]byte, Entry, error) {
+	
+}
